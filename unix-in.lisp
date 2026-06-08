@@ -938,7 +938,7 @@ input/output to the returned process and wait for its completion."
 (defun call-without-read-macro (char thunk)
   (bind (((:values function terminating-p) (get-macro-character char)))
     (unwind-protect
-         (progn (set-macro-character char nil t)
+         (progn (set-syntax-from-char char #\A)
                 (funcall thunk))
       (set-macro-character char function terminating-p))))
 
